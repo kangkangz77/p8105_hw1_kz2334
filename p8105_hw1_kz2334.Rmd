@@ -7,12 +7,12 @@ output: github_document
 
 ## Problem 1
 
-Create a dataframe which comprised of four different vectors:
+Create a dataframe comprised of four different vectors:
 ```{r, include=FALSE}
 library(tidyverse)
 ```
 
-```{r Problem 1}
+```{r Problem 1.1}
 
 df = tibble(
   vec_unif = rdunif(10,0,5),
@@ -22,3 +22,27 @@ df = tibble(
 )
 
 ```
+
+The elements and their classes are shown below:
+
+```{r, echo = FALSE}
+df
+```
+
+
+Caculate mean of each variable in the dataframe:
+```{r Problem 1.2, warning = FALSE}
+mean_unif = mean(df$vec_unif)
+mean_indict = mean(df$vec_indict)
+mean_char = mean(df$vec_char)
+mean_factor = mean(df$vec_factor)
+```
+
+Generate a table of each mean value:
+
+  Variable    |    Mean
+------------- | -------------
+     uniform  | `r mean_unif`
+indicator  | `r mean_indict`
+character  | `r mean_char`
+factor  | `r mean_factor`
