@@ -28,7 +28,7 @@ The elements and their classes are shown below:
 ```{r, echo = FALSE}
 df
 ```
-
+--------------------------
 
 Caculate mean of each variable in the dataframe:
 ```{r Problem 1.2, warning = FALSE}
@@ -50,8 +50,24 @@ factor  | `r mean_factor`
 **Answer**: 
 Uniform sample and logical vector work, while character vector and factor charactor do not work. 
 
-*   Because uniform sample are Real number which can be calculated. 
+*   Uniform sample are Real number which can be calculated. 
 
 *   As for indicator variable, 1 represents TRUE and 0 represents FALSE. When indicator variable are being calculated, the numeric value is used. 
 
-*   Character variable and factor  variable are both nominal variable, it is meaningless to calculate their means.
+*   Character variable and factor  variable are both nominal variables, it is meaningless to calculate their means.
+
+-----------------------------------
+Convert character and factor  variable to numeric:
+```{r Problem 1.3, eval = FALSE}
+as.numeric(df$vec_char)
+as.numeric((df$vec_factor))
+```
+
+**Result**: Charactor variable turned to be NA, while factor varible successfully converted to numeric variable.
+
+```{r Problem 1.4, warning = FALSE}
+as.numeric(as.factor(df$vec_char))
+as.numeric(as.character(df$vec_factor))
+```
+
+**Result**: Character variable successfully convertd to numeric variable in the end, while factor variable failed. We can say that charactor variable cannot convert to numeric variable directly, while factor variable could.
