@@ -4,17 +4,21 @@ author: "Kangkang Zhang"
 date: "9/16/2018"
 output: github_document
 ---
-
+  
 ## Problem 1
-
+  
 Create a dataframe comprised of four different vectors:
-```{r, include=FALSE}
+```{r, eval = FALSE}
+library(tidyverse)
+```
+
+```{r, include = FALSE}
 library(tidyverse)
 ```
 
 ```{r Problem 1.1}
 
-df = tibble(
+df1 = tibble(
   vec_unif = runif(10,0,5),
   vec_indict = I(vec_unif > 2),
   vec_char =  letters[seq(1,10)],
@@ -24,31 +28,31 @@ df = tibble(
 ```
 
 The elements and their classes are shown below:
-
+  
 ```{r, echo = FALSE}
-df
+df1
 ```
 --------------------------
-
-Caculate mean of each variable in the dataframe:
-```{r Problem 1.2, warning = FALSE}
-mean_unif = mean(df$vec_unif)
-mean_indict = mean(df$vec_indict)
-mean_char = mean(df$vec_char)
-mean_factor = mean(df$vec_factor)
+  
+  Caculate mean of each variable in the dataframe:
+  ```{r Problem 1.2, warning = FALSE}
+mean_unif = mean(df1$vec_unif)
+mean_indict = mean(df1$vec_indict)
+mean_char = mean(df1$vec_char)
+mean_factor = mean(df1$vec_factor)
 ```
 
 Generate a table of each mean value:
-
+  
   Variable    |    Mean
 ------------- | -------------
-     uniform  | `r mean_unif`
+  uniform  | `r mean_unif`
 indicator  | `r mean_indict`
 character  | `r mean_char`
 factor  | `r mean_factor`
 
 **Answer**: 
-Uniform sample and logical vector work, while character vector and factor charactor do not work. 
+  Uniform sample and logical vector work, while character vector and factor charactor do not work. 
 
 *   Uniform sample are Real number which can be calculated. 
 
@@ -57,19 +61,32 @@ Uniform sample and logical vector work, while character vector and factor charac
 *   Character variable and factor  variable are both nominal variables, it is meaningless to calculate their means.
 
 -----------------------------------
-Convert character and factor  variable to numeric:
-```{r Problem 1.3, eval = FALSE}
-as.numeric(df$vec_char)
-as.numeric((df$vec_factor))
+  Convert character and factor  variable to numeric:
+  ```{r Problem 1.3, eval = FALSE}
+as.numeric(df1$vec_char)
+as.numeric((df1$vec_factor))
 ```
 
 **Result**: Charactor variable turned to be NA, while factor varible successfully converted to numeric variable.
 
 ```{r Problem 1.4, warning = FALSE}
-as.numeric(as.factor(df$vec_char))
-as.numeric(as.character(df$vec_factor))
+as.numeric(as.factor(df1$vec_char))
+as.numeric(as.character(df1$vec_factor))
 ```
 
 **Result**: Character variable successfully convertd to numeric variable in the end, while factor variable failed. We can say that charactor variable cannot convert to numeric variable directly, while factor variable could.
 
 ## Problem 2
+Create a dataframe comprised of five different vectors:
+```{r Problem 2.1}
+
+df2 = tibble(
+  x = rnorm(1000),
+  y = rnorm(1000),
+  vec_logic = I(x + y > 2),
+  vec_num =  as.numeric(I(x + y > 2)),
+  vec_factor = as.factor(I(x + y > 2))
+)
+
+```
+* the size of the dataset * : `r dim(df2)`
