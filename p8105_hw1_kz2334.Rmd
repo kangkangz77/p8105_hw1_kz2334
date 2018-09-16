@@ -71,3 +71,5 @@ as.numeric(as.character(df$vec_factor))
 ```
 
 **Result**: Character variable successfully convertd to numeric variable in the end, while factor variable failed. We can say that charactor variable cannot convert to numeric variable directly, while factor variable could.
+
+## Problem 2
