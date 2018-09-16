@@ -47,3 +47,11 @@ indicator  | `r mean_indict`
 character  | `r mean_char`
 factor  | `r mean_factor`
 
+**Answer**: 
+Uniform sample and logical vector work, while character vector and factor charactor do not work. 
+
+*   Because uniform sample are Real number which can be calculated. 
+
+*   As for indicator variable, 1 represents TRUE and 0 represents FALSE. When indicator variable are being calculated, the numeric value is used. 
+
+*   Character variable and factor  variable are both nominal variable, it is meaningless to calculate their means.
