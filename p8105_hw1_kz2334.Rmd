@@ -15,7 +15,7 @@ library(tidyverse)
 ```{r Problem 1.1}
 
 df = tibble(
-  vec_unif = rdunif(10,0,5),
+  vec_unif = runif(10,0,5),
   vec_indict = I(vec_unif > 2),
   vec_char =  letters[seq(1,10)],
   vec_factor = factor(c("up","down","up","down","up","down","up","down","up","down"))
@@ -46,3 +46,4 @@ Generate a table of each mean value:
 indicator  | `r mean_indict`
 character  | `r mean_char`
 factor  | `r mean_factor`
+
