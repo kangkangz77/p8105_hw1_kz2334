@@ -38,7 +38,7 @@ df1
 Caculate mean of each variable in the dataframe:
 ```{r Problem 1.2, warning = FALSE}
 mean_unif = mean(df1$vec_unif)
-mean_logic1 = mean(df1$vec_logic1)
+mean_logic = mean(df1$vec_logic)
 mean_char = mean(df1$vec_char)
 mean_factor = mean(df1$vec_factor)
 ```
@@ -48,7 +48,7 @@ Generate a table of each mean value:
   Variable    |    Mean
 ------------- | -------------
 uniform  | `r mean_unif`
-indicator  | `r mean_logic1`
+indicator  | `r mean_logic`
 character  | `r mean_char`
 factor  | `r mean_factor`
 
@@ -74,7 +74,7 @@ as.numeric((df1$vec_factor))
 
 ```{r Problem 1.4, warning = FALSE}
 as.numeric(as.factor(df1$vec_char))
-as.numeric(as.character(df1$vec_logic1))
+as.numeric(as.character(df1$vec_logic))
 ```
 
 **Result**: Character variable successfully convertd to numeric variable in the end, while factor variable failed. We can say that charactor variable cannot convert to numeric variable directly, while factor variable could.
@@ -90,7 +90,7 @@ df2 = tibble(
   y = rnorm(1000),
   vec_logic = I(x + y > 2),
   vec_num =  as.numeric(I(x + y > 2)),
-  vec_factor2 = as.factor(I(x + y > 2))
+  vec_factor = as.factor(I(x + y > 2))
 )
 
 ```
@@ -129,7 +129,19 @@ Draw scatterplot of y vs x whose color points use the **numeric variable**:
 
 ggplot(df2, aes(x, y)) + 
   geom_point(aes(colour = factor(df2$vec_num))) + 
-  ggtitle("y vs x using logical variable") +  
+  ggtitle("y vs x using numeric variable") +  
+  theme(plot.title = element_text(hjust=0.5)) + 
+  scale_colour_discrete(name = NULL, guide = guide_legend(reverse=TRUE), labels = c('x + y <= 2','x + y > 2'))
+```
+
+-------------
+
+Draw scatterplot of y vs x whose color points use the **factor variable**:
+```{r Problem2.4}
+
+ggplot(df2, aes(x, y)) + 
+  geom_point(aes(colour = factor(df2$vec_factor))) + 
+  ggtitle("y vs x using factor variable") +  
   theme(plot.title = element_text(hjust=0.5)) + 
   scale_colour_discrete(name = NULL, guide = guide_legend(reverse=TRUE), labels = c('x + y <= 2','x + y > 2'))
 ```
