@@ -9,7 +9,7 @@ output: github_document
   
 Create a dataframe comprised of four different vectors:
 
-```{r, eval = FALSE}
+```{r Problem 1.1 , eval = FALSE}
 library(tidyverse)
 ```
 
@@ -17,7 +17,7 @@ library(tidyverse)
 library(tidyverse)
 ```
 
-```{r Problem 1.1}
+```{r }
 
 df1 = tibble(
   vec_unif = runif(10,0,5),
@@ -104,3 +104,17 @@ df2 = tibble(
 *  mean of x: `r mean(df2$x)`
 
 *  the proportion of cases for which the logical vector is `TRUE`: `r mean(df2$vec_logic)`
+
+-----------------------
+
+Draw scatterplot of y vs x whose color points use the **logical variable**:
+```{r Problem2.2}
+
+ggplot(df2, aes(x, y)) + 
+  geom_point(aes(colour = factor(df2$vec_logic))) + 
+  ggtitle("y vs x using logical variable") +  
+  theme(plot.title = element_text(hjust=0.5)) + 
+  scale_colour_discrete(name = NULL, guide = guide_legend(reverse=TRUE), labels = c('x + y <= 2','x + y > 2'))
+
+```
+
