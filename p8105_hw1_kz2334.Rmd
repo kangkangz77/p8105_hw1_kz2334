@@ -115,6 +115,21 @@ ggplot(df2, aes(x, y)) +
   ggtitle("y vs x using logical variable") +  
   theme(plot.title = element_text(hjust=0.5)) + 
   scale_colour_discrete(name = NULL, guide = guide_legend(reverse=TRUE), labels = c('x + y <= 2','x + y > 2'))
-
+  
 ```
 
+```{r, include = FALSE}
+ggsave("y vs x using logical variable.png")
+```
+
+-------------------
+
+Draw scatterplot of y vs x whose color points use the **numeric variable**:
+```{r Problem2.3}
+
+ggplot(df2, aes(x, y)) + 
+  geom_point(aes(colour = factor(df2$vec_num))) + 
+  ggtitle("y vs x using logical variable") +  
+  theme(plot.title = element_text(hjust=0.5)) + 
+  scale_colour_discrete(name = NULL, guide = guide_legend(reverse=TRUE), labels = c('x + y <= 2','x + y > 2'))
+```
