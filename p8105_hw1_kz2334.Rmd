@@ -53,7 +53,7 @@ character  | `r mean_char`
 factor  | `r mean_factor`
 
 **Answer**: 
-Uniform sample and logical vector work, while character vector and factor charactor do not work. 
+Uniform sample and logical vector work, while character vector and factor vector do not work. 
 
 *   Uniform sample are Real number which can be calculated. 
 
@@ -118,6 +118,7 @@ ggplot(df2, aes(x, y)) +
   
 ```
 
+Save the first plot with ggsave.
 ```{r, include = FALSE}
 ggsave("y vs x using logical variable.png")
 ```
@@ -145,3 +146,6 @@ ggplot(df2, aes(x, y)) +
   theme(plot.title = element_text(hjust=0.5)) + 
   scale_colour_discrete(name = NULL, guide = guide_legend(reverse=TRUE), labels = c('x + y <= 2','x + y > 2'))
 ```
+
+**Comment**:
+The color scales are the same among the three scatterplots. When we were converting logical vector into numeric vector or factor vector, samples which had same logical value would still have the same numeric value or factor value. So the scatterplots should look the same.
